@@ -17160,7 +17160,8 @@ var Login = function (_React$Component) {
           error: 'Incorrect Username or Password'
         });
       }
-      fetch('http://localhost:3000/login', {
+      console.log(123);
+      fetch('http://localhost/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -17394,7 +17395,7 @@ var Register = function (_React$Component) {
       this.setState({
         passwordMatchError: null
       });
-      fetch('http://localhost:3000/register', {
+      fetch('http://localhost/register', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -17689,7 +17690,7 @@ var Board = function (_React$Component) {
     value: function loadData() {
       var _this2 = this;
 
-      fetch('http://localhost:3000/data', {
+      fetch('http://localhost/data', {
         credentials: 'include'
       }).then(function (resp) {
         return resp.json();
@@ -17747,7 +17748,7 @@ var Board = function (_React$Component) {
           sendError: null
         });
         this.handleToggle();
-        fetch('http://localhost:3000/send', {
+        fetch('http://localhost/send', {
           method: 'POST',
           credentials: 'include',
           headers: {
