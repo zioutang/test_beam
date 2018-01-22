@@ -49,7 +49,7 @@ class Board extends React.Component {
 
 
   loadData() {
-    fetch('https://salty-reaches-79272.herokuapp.com/data', {
+    fetch('https://dry-wave-37460.herokuapp.com/data', {
         credentials: 'include',
       })
       .then(resp => resp.json())
@@ -102,7 +102,7 @@ class Board extends React.Component {
         sendError: null
       });
       this.handleToggle();
-      fetch('https://salty-reaches-79272.herokuapp.com/send', {
+      fetch('https://dry-wave-37460.herokuapp.com/send', {
           method: 'POST',
           credentials: 'include',
           headers: {

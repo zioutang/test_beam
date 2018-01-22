@@ -14,7 +14,7 @@ class Login extends React.Component {
         error: 'Incorrect Username or Password'
       });
     }
-    fetch('https://salty-reaches-79272.herokuapp.com/login', {
+    fetch('https://dry-wave-37460.herokuapp.com/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
