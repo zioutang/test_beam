@@ -1,0 +1,83 @@
+/*#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}*/
+
+.centered {
+  text-align: center;
+}
+
+.input {
+  margin: 0 5px 5px 5px;
+  width: 95%;
+}
+
+.button {
+  margin: 5px;
+}
+
+.title-login{
+  font-size: 2em;
+  margin-top: 15%;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00D1B2;
+  font-weight: bold;
+}
+
+.title-register{
+  font-size: 2em;
+  margin-top: 10%;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00D1B2;
+  font-weight: bold;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 700px;
+  width: 700px;
+  margin: auto;
+  width: 50%;
+}
+
+.login-holder {
+
+  height: 70%;
+  width: 70%;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 3px 3px 3px 3px #DBDBDB;
+  background-color: rgb(255,255,255);
+}
+
+.icon {
+  margin: 0 5px 5px 5px;
+}
+
+.field-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.field {
+  width: 80%;
+  height: 80%;
+}
+
+.buttons {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
