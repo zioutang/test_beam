@@ -14,7 +14,7 @@ class Login extends React.Component {
         error: 'Incorrect Username or Password'
       });
     }
-    fetch('http://localhost:3000/login', {
+    fetch('https://salty-reaches-79272.herokuapp.com/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
