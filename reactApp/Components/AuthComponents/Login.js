@@ -15,7 +15,7 @@ class Login extends React.Component {
       });
     }
     console.log(123);
-    fetch('https://dry-wave-37460.herokuapp.com/login', {
+    fetch('https://beam-test-123.herokuapp.com/login', {
         method: 'POST',
         credentials: 'include',
         headers: {

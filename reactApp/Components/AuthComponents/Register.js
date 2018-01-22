@@ -49,7 +49,7 @@ class Register extends React.Component {
     this.setState({
       passwordMatchError: null
     });
-    fetch('http://localhost/register', {
+    fetch('https://beam-test-123.herokuapp.com/register', {
         method: 'POST',
         credentials: 'include',
         headers: {
