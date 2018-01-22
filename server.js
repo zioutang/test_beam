@@ -128,6 +128,7 @@ app.post('/send', (req, res) => {
         .then(() => {
           res.json({
             success: true,
+            out: result.out
           });
         })
         .catch((err) => {
@@ -147,3 +148,4 @@ app.listen(PORT, error => {
     console.error(error) :
     console.info(`==> 🌎 Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.`);
 });
+module.exports = app;
