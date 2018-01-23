@@ -69,10 +69,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 /* END OF PASSPORT SETUP */
 
-
-// app.get('/', (request, response) => {
-//   response.sendFile(__dirname + '/build/index.html'); // For React/Redux
-// });
 app.post('/register', (req, res) => {
   new User({
     username: req.body.username,

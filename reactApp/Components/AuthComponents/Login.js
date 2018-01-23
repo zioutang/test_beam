@@ -14,7 +14,6 @@ class Login extends React.Component {
         error: 'Incorrect Username or Password'
       });
     }
-    console.log(123);
     fetch('https://beam-test-123.herokuapp.com/login', {
         method: 'POST',
         credentials: 'include',

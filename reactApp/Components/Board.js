@@ -1,9 +1,3 @@
-import {
-  Card,
-  CardTitle,
-}
-from 'material-ui/Card';
-
 import Paper from 'material-ui/Paper';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
@@ -17,12 +11,7 @@ import {
 } from 'material-ui/Table';
 
 import AppBar from 'material-ui/AppBar';
-import {
-  GridList,
-  GridTile
-} from 'material-ui/GridList';
 import TextField from 'material-ui/TextField';
-
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import validator from 'validator';
@@ -73,13 +62,11 @@ class Board extends React.Component {
       });
   }
   handleToggle() {
-    // console.log(this.state);
     this.setState({
       DrawerOpen: !this.state.DrawerOpen,
     });
   }
   send(recipient, amount) {
-    // console.log(amount);
     if (!recipient || !amount) {
       this.setState({
         sendError: 'recipient or Amount cannot be empty'
@@ -203,7 +190,6 @@ class Board extends React.Component {
           })}
         </TableBody>
           </Table>
-
         </Paper>
       </div>
     );
