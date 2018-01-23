@@ -1,14 +1,9 @@
 language: node_js
 sudo: false
 node_js:
-  - "8.9.1"
+  # - "8.9.1"
   - "4.0"
 install:
   - npm install
 script:
   - npm test
-# deploy:
-#   provider: heroku
-#   api_key:
-#     secure: XWTLACZxPpATZcnBrGiQq+Eb9gRq5abKejOR4QvTgkDHchmYZPMu1223vpKGn/KYXJZL+ZIHonQlqYntYx1SNyv21gkk/AUqOVkvYLgi6WVTsnsbGUeLYgKUdixHAQoIM29fPHeC4V6zIJPNVdoK3WcMaRQRMtj5jv8eqyCXjV3V+9hUEy4A0sO7PVf7ha/KT5UFxegoW8DFQ+Bo//fD2UgXvZmEko+Lqz6Xi0++GbnHEoYCUcMU9deaLITB+HfbAW2JX3L9LrI6ucmd6P5eVpGYiV3x8Eu9cb8gFS6f0yQp0CPvJLqDtjTdb4XuWX5QZdoEa2oRHh5zs0OyTUIblQaRAMxyKorMjgLeF2lh+PsgfX7kUrLcju5JaajnY5oVzEfvKMtliUuED1b+4bYWwSP8E1jpSDHzAP+fgHmSH910MpC+fijH9rvmZGfOspGqoRSPpLh9ovDhAgyPQDE6j0U74THcMKY6BCU65wyA3FQNB0fdvXrlI4Y4lq+UF1KCc69HIzRuzSLBZyQ9e2ZxKDWs73JxTNz100dzA7FT2vCbeuy9/AOZ5amqRDVr1H9QI2sEe+e7/FXbl1IQyKGZyHa4TGQz9M8gxpvwK0+qlQucrxXrjfMH+HtSJkLaw5ykVXfOjY9sx1T3I5lnEuI0y85v/YmknHdrJ6JWV+yEe+4=
-#   app: morning-dusk-64545
