@@ -4,6 +4,7 @@
 Backend Challenge that supports simple Authenticate and sending money function
 
 A demo can be viewed [here](https://beam-test-123.herokuapp.com/)
+you can use the testing account (1@gmail.com / 123) to test the application. Or register your own account.
 
 ## Installation
 
@@ -17,4 +18,11 @@ After setting up environment variable, do the following
 ```
 npm install
 npm start
+```
+
+
+## Mocha Test
+
+```
+npm test
 ```
