@@ -1,9 +1,13 @@
 language: node_js
 sudo: false
 node_js:
-  - "8.9.1"
-  # - "4.0"
+- 8.9.1
 install:
-  - npm install
+- npm install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: WVQCWt0f/vPkOJUIWc/lRH1u3yXf2L0C1Tlm6s4Bdg2MrZIMPcTYpzLLLxdAaT6BQXwigYdVZHXNuNXi58z4LRHte2weIDfFigkOvX+IjEfPwtDmvmcUUDaaxY6Z+UEz+CdxQJpS/H9STp0e5ricttNJ8btu12v/YecCUUGIZVAiXVjcGLQI7edK/CCFdNZetOXdPzWCuSPjATFX87esiqSs2dAe1jYCz4MKGYyQ8eSG8zK7O0BwKsJDHwVWrji/z1TVRSKbZq6Hh5LfkCTqzK2TodLBp5KIVKD941p4fJdSDx+WvH/tRHbVA8cL6PfQ6eoGhUpXvHoase+SPKwJK9UcoCy7fIbNcGYqo63WPFBsTdhONcZ0CI7IZInv7Cr4rVBSiq+1FyAR/tN3HAaOifaSL1S+Zs/fax7HXiuRni6Cd5/zscJFlESeGJamSBtSlLsshqG4qu+qfqM5TgvZ9t9eRhnAJxmJdff8M4g7insiPGtnRKwidfLmFsWK7fvsnplull16LZOj829HGc7FL/hEBO18eCdQT8RuZFYWDrIIzav4NR6DuZ7uIf7dMFhu7kSCkr05/3KIT9SO1av+didSyS22cDXEIYKwf0/183dSYPmDRuLSc1M93OU7xAmBI3NzYeiQwjjllN/lYL2ZfhwVlgKvE6aLz89VYjJkLDU=
+  app: beam-test-123

@@ -6,11 +6,9 @@ import {
 import {
   Login,
 } from './AuthComponents/Login';
-
 import {
   Board,
 } from './Board';
-
 import {
   Register,
 } from './AuthComponents/Register';

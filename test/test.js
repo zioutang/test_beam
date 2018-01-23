@@ -1,13 +1,11 @@
 const chai = require('chai');
 const expect = require('chai').expect;
-
 chai.use(require('chai-http'));
 
-// const app = require('../server.js'); // local
+// const app = require('../server.js'); // local test
 const app = `https://beam-test-123.herokuapp.com`;
 describe('API endpoint', function () {
   this.timeout(5000); // How long to wait for a response (ms)
-
 
   it('get login', function () {
     return chai.request(app)
@@ -19,18 +17,20 @@ describe('API endpoint', function () {
   });
 
   it('post login', function () {
+    let test_username = '1@gmail.com'; // using an existing account to test
+    let test_password = '123';
     return chai.request(app)
       .post('/login')
       .send({
-        username: '1@gmail.com',
-        password: '123'
+        username: test_username,
+        password: test_password
       })
       .then(function (res) {
         expect(res).to.have.status(200);
         expect(res).to.be.json;
         expect(res.body).to.be.an('object');
-        expect(res.body.user.username).to.equal('1@gmail.com');
-        expect(res.body.user.password).to.equal('123');
+        expect(res.body.user.username).to.equal(test_username);
+        expect(res.body.user.password).to.equal(test_password);
       });
   });
 

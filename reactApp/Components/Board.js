@@ -11,7 +11,6 @@ import {
 } from 'material-ui/Table';
 
 import AppBar from 'material-ui/AppBar';
-import TextField from 'material-ui/TextField';
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import validator from 'validator';
