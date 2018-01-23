@@ -1,5 +1,5 @@
 # Challenge for a cool company
-[![Build Status](https://travis-ci.org/zioutang/test_beam.svg?branch=master)](https://github.com/zioutang/test_beam)
+[![Build Status](https://travis-ci.org/zioutang/test_beam.svg?branch=master)](https://travis-ci.org/zioutang/test_beam)
 
 Backend Challenge that supports simple Authenticate and sending money function
 
