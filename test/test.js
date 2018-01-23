@@ -3,7 +3,8 @@ const expect = require('chai').expect;
 
 chai.use(require('chai-http'));
 
-const app = require('../server.js');
+// const app = require('../server.js'); // local
+const app = `https://beam-test-123.herokuapp.com`;
 describe('API endpoint', function () {
   this.timeout(5000); // How long to wait for a response (ms)
 
