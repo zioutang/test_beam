@@ -15,6 +15,12 @@ Implemented Travis-ci tool. Simply click on the badge will lead you to Travis.
 You need to setup your own env.sh file to setup mlab database connection.
 
 ```
+export MONGODB_URI=YOUR_MLAB_CONNECTION
+```
+
+Then run the scripts in your terminal
+
+```
 source env.sh
 ```
 
