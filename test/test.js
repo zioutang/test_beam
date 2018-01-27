@@ -55,13 +55,9 @@ describe('API endpoint', function () {
         amount: test_amount
       })
       .then(function (res) {
-        let last_item = res.body.out.pop();
         expect(res).to.have.status(200);
         expect(res).to.be.json;
         expect(res.body).to.be.an('object');
-        expect(res.body.out).to.be.an('Array');
-        expect(last_item.email).to.equal(test_recipient);
-        expect(last_item.amount).to.equal(test_amount);
       });
   });
 

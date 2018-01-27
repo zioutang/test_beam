@@ -70,24 +70,49 @@ app.use(passport.session());
 /* END OF PASSPORT SETUP */
 
 app.post('/register', (req, res) => {
-  new User({
-    username: req.body.username,
-    password: req.body.password,
-    balance: 100,
-    in: [],
-    out: []
-  }).save((err, user) => {
-    if (err) {
-      res.json({
-        success: false,
-        error: err,
+  User.find()
+    .then(result => {
+      // console.log('found item: ', result);
+      let in_list = [];
+      for (let i = 0; i < result.length; i++) {
+        let curr = result[i];
+        // console.log('curr: ', curr);
+        for (let j = 0; j < curr.out.length; j++) {
+          let node = curr.out[j];
+          // console.log('node: ', node);
+          if (node.email === req.body.username) {
+            let item = {
+              'email': curr.username,
+              'amount': node.amount
+            }
+            in_list.push(item);
+          }
+        }
+      }
+      console.log(in_list);
+      return in_list;
+    })
+    .then(in_list => {
+      new User({
+        username: req.body.username,
+        password: req.body.password,
+        balance: 100,
+        in: in_list,
+        out: []
+      }).save((err, user) => {
+        if (err) {
+          res.json({
+            success: false,
+            error: err,
+          });
+        } else {
+          res.json({
+            success: true,
+          });
+        }
       });
-    } else {
-      res.json({
-        success: true,
-      });
-    }
-  });
+    })
+
 });
 
 app.get('/login', (req, res) => {
@@ -116,19 +141,33 @@ app.post('/send', (req, res) => {
   let email = req.body.recipient;
   let amount = req.body.amount;
   let target = req.user;
+  let transaction = {
+    email: email,
+    amount: amount
+  }
   User.findOne(target)
     .then((result) => {
-      let transaction = {
-        email: email,
-        amount: amount
-      }
       result.out.push(transaction);
       result.save()
         .then(() => {
-          res.json({
-            success: true,
-            out: result.out
-          });
+          User.findOne({
+              username: email
+            })
+            .then(result => {
+              res.json({
+                success: true,
+              });
+              if (!result) {
+                return;
+              }
+              let item = {
+                'email': req.user.username,
+                'amount': amount
+              }
+              console.log(item);
+              result.in.push(item);
+              return result.save();
+            })
         })
         .catch((err) => {
           console.log('err: ', err);

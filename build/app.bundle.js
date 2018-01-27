@@ -17046,7 +17046,7 @@ var Login = function (_React$Component) {
           error: 'Incorrect Username or Password'
         });
       }
-      fetch('https://beam-test-123.herokuapp.com/login', {
+      fetch('http://localhost:3000/login', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -17280,7 +17280,7 @@ var Register = function (_React$Component) {
       this.setState({
         passwordMatchError: null
       });
-      fetch('https://beam-test-123.herokuapp.com/register', {
+      fetch('http://localhost:3000/register', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -17536,6 +17536,25 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var styles = {
+  center: {
+    'textAlign': 'center'
+    // border: '2px solid red',
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'baseline',
+    justifyContent: 'space-between'
+  },
+  table: {
+    // border: '2px solid red',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    alignItems: 'baseline'
+  }
+};
+
 var Board = function (_React$Component) {
   _inherits(Board, _React$Component);
 
@@ -17554,6 +17573,7 @@ var Board = function (_React$Component) {
     _this.handleToggle = _this.handleToggle.bind(_this);
     _this.send = _this.send.bind(_this);
     _this.loadData = _this.loadData.bind(_this);
+    _this.createTable = _this.createTable.bind(_this);
     return _this;
   }
 
@@ -17567,18 +17587,25 @@ var Board = function (_React$Component) {
     value: function loadData() {
       var _this2 = this;
 
-      fetch('https://beam-test-123.herokuapp.com/data', {
+      fetch('http://localhost:3000/data', {
         credentials: 'include'
       }).then(function (resp) {
         return resp.json();
       }).then(function (resp) {
         if (resp.success) {
-          var sum = 0;
+          var sum_out = 0;
+          var sum_in = 0;
+          console.log('out: ', resp.userData.out);
+          console.log('in: ', resp.userData.in);
+
           resp.userData.out.forEach(function (item) {
-            sum += parseInt(item.amount);
+            sum_out += parseInt(item.amount);
+          });
+          resp.userData.in.forEach(function (item) {
+            sum_in += parseInt(item.amount);
           });
           _this2.setState({
-            balance: resp.userData.balance - sum,
+            balance: resp.userData.balance - sum_out + sum_in,
             in: resp.userData.in,
             out: resp.userData.out
           });
@@ -17623,7 +17650,7 @@ var Board = function (_React$Component) {
           sendError: null
         });
         this.handleToggle();
-        fetch('https://beam-test-123.herokuapp.com/send', {
+        fetch('http://localhost:3000/send', {
           method: 'POST',
           credentials: 'include',
           headers: {
@@ -17644,6 +17671,72 @@ var Board = function (_React$Component) {
       }
     }
   }, {
+    key: 'createTable',
+    value: function createTable(_ref) {
+      var list = _ref.list,
+          style = _ref.style,
+          title = _ref.title;
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'p',
+          { style: styles.center },
+          title
+        ),
+        _react2.default.createElement(
+          _Table.Table,
+          {
+            style: { tableLayout: 'auto' },
+            fixedHeader: false
+          },
+          _react2.default.createElement(
+            _Table.TableHeader,
+            {
+              adjustForCheckbox: false,
+              displaySelectAll: false
+            },
+            _react2.default.createElement(
+              _Table.TableRow,
+              null,
+              _react2.default.createElement(
+                _Table.TableHeaderColumn,
+                null,
+                'Email'
+              ),
+              _react2.default.createElement(
+                _Table.TableHeaderColumn,
+                null,
+                'Amount'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _Table.TableBody,
+            {
+              displayRowCheckbox: false },
+            list.map(function (item, key) {
+              return _react2.default.createElement(
+                _Table.TableRow,
+                { id: key },
+                _react2.default.createElement(
+                  _Table.TableRowColumn,
+                  null,
+                  item.email
+                ),
+                _react2.default.createElement(
+                  _Table.TableRowColumn,
+                  { style: { color: style } },
+                  item.amount
+                )
+              );
+            })
+          )
+        )
+      );
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this4 = this;
@@ -17655,20 +17748,29 @@ var Board = function (_React$Component) {
         'div',
         null,
         _react2.default.createElement(_AppBar2.default, {
-          className: 'appbar',
           titleStyle: { textAlign: 'center' },
-          title: 'Your Profile',
-          showMenuIconButton: false
+          title: 'Your Transaction History',
+          iconElementLeft: _react2.default.createElement(_FlatButton2.default, {
+            label: 'Login out',
+            onClick: function onClick() {
+              return _this4.props.history.push('/');
+            },
+            disableTouchRipple: true
+          }),
+          iconElementRight: _react2.default.createElement(_FlatButton2.default, {
+            label: 'Send Money',
+            onClick: this.handleToggle,
+            disableTouchRipple: true
+          })
         }),
         _react2.default.createElement(
           _Drawer2.default,
           {
-            openSecondary: true,
             docked: false,
             width: '30%',
             open: this.state.DrawerOpen,
-            onRequestChange: function onRequestChange(open) {
-              return _this4.setState({ open: open });
+            onRequestChange: function onRequestChange(DrawerOpen) {
+              return _this4.setState({ DrawerOpen: DrawerOpen });
             },
             disableSwipeToOpen: true
           },
@@ -17717,67 +17819,24 @@ var Board = function (_React$Component) {
             primary: true
           })
         ),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
-          'h',
-          null,
-          'Current Balance: ',
-          this.state.balance
+          'div',
+          { style: styles.table },
+          _react2.default.createElement(
+            'h',
+            { style: styles.center },
+            ' Current Balance: ',
+            this.state.balance
+          )
         ),
-        _react2.default.createElement(_FlatButton2.default, {
-          label: 'Send Money',
-          onClick: this.handleToggle,
-          primary: true,
-          disableTouchRipple: true
-        }),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
           _Paper2.default,
-          { zDepth: 2, style: { display: 'flex' } },
-          _react2.default.createElement(
-            _Table.Table,
-            null,
-            _react2.default.createElement(
-              _Table.TableHeader,
-              {
-                adjustForCheckbox: false,
-                displaySelectAll: false
-              },
-              _react2.default.createElement(
-                _Table.TableRow,
-                null,
-                _react2.default.createElement(
-                  _Table.TableHeaderColumn,
-                  null,
-                  'Recipient Email'
-                ),
-                _react2.default.createElement(
-                  _Table.TableHeaderColumn,
-                  null,
-                  'Amount'
-                )
-              )
-            ),
-            _react2.default.createElement(
-              _Table.TableBody,
-              {
-                displayRowCheckbox: false },
-              this.state.out.map(function (item, key) {
-                return _react2.default.createElement(
-                  _Table.TableRow,
-                  { id: key },
-                  _react2.default.createElement(
-                    _Table.TableRowColumn,
-                    null,
-                    item.email
-                  ),
-                  _react2.default.createElement(
-                    _Table.TableRowColumn,
-                    { style: { color: 'red' } },
-                    item.amount
-                  )
-                );
-              })
-            )
-          )
+          { zDepth: 2, style: styles.table },
+          this.createTable({ list: this.state.in, style: 'green', title: 'Money you received' }),
+          this.createTable({ list: this.state.out, style: 'red', title: 'Money you sent' })
         )
       );
     }
