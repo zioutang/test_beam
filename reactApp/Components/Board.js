@@ -194,6 +194,7 @@ class Board extends React.Component {
         />
         <Drawer
           docked={false}
+          openSecondary={true}
           width={'30%'}
           open={this.state.DrawerOpen}
           onRequestChange={(DrawerOpen) => this.setState({DrawerOpen})}

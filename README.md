@@ -1,7 +1,7 @@
 # Challenge for a cool company
 [![Build Status](https://travis-ci.org/zioutang/test_beam.svg?branch=master)](https://travis-ci.org/zioutang/test_beam)
 
-Backend Challenge that supports simple login / register and sending money function.
+Backend Challenge that supports simple login / register and sending money function. You can send money to any email account even though they are not yet to be registered. If that is the case, when you registered the account, the amount will be reflected properly.
 
 A demo can be viewed [here](https://beam-test-123.herokuapp.com/)
 
